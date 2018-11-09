@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "say" : "cowsay Hello World"
+    "say": "cowsay Hello World"
   },
   "keywords": [
     "basic",
@@ -14,6 +14,7 @@
   "author": "Juan Balceda",
   "license": "ISC",
   "dependencies": {
-    "cowsay": "^1.3.1"
+    "cowsay": "^1.3.1",
+    "yargs": "^12.0.2"
   }
 }
