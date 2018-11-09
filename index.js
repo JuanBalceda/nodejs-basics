@@ -5,6 +5,7 @@ import { add, divide, multiply, substract } from "./math";
 import { greet as _greet } from "./greetings";
 import { sayHello } from "./greetings/hello";
 */
+
 const math = require("./src/math");
 const greet = require("./src/greetings");
 const hello = require("./src/greetings/hello");
@@ -174,4 +175,60 @@ const greet = require('./src/greet');
 greet.emit('call', 'Juan', (name) => {
     console.log(`Calling... ${name}.`)
 })
+/*---------------------------------*/
+
+//  Web server
+const http = require('http');
+const fs = require('fs');
+
+const server = http.createServer((req, res) => {
+    fs.readFile('./resources/my_page.html', (err, data) => {
+        if (err) {
+            console.error(err);
+            return;
+        }
+        res.end(data);
+    });
+});
+console.log('Starting server...')
+server.listen(3000);
+/*---------------------------------*/
+
+// Express
+const express = require('express');
+const app = express();
+
+app.get('/',(req, res) => {
+    res.send("{path:'/',dev:'Juan Balceda'}")
+});
+
+app.get('/anime',(req, res) => {
+    res.send("{path:'/anime',dev:'Juan Balceda'}")
+});
+
+app.get('*',(req, res) => {
+    res.send("{path:'?',dev:'Juan Balceda'}")
+});
+
+app.listen(3000, () => {
+    console.log('Express server running at port 3000...')
+});
+/*---------------------------------*/
+
+// Api Express
+const express = require("express");
+const app = express();
+const { PORT } = require("./config");
+
+require("./routes/api")(app);
+require("./routes/views")(app);
+
+function init(){
+    console.log("Iniciando instancia de Express...");
+    app.listen(PORT, ()=>{
+        console.log("El servidor Express esta activo.");
+    });
+}
+
+init();
 /*---------------------------------*/
